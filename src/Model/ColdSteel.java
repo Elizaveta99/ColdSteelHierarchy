@@ -7,22 +7,13 @@ package Model;
  */
 public class ColdSteel {
     /**
-     * Field - title of cold steel
+     * Mandatory fields - title and price of cold steel
      */
     private String title = "ColdSteel";
+    private  double price = 0;
 
     /**
-     * Field - type of cold steel
-     */
-    //private String type = "coldsteel";
-
-    /*private boolean hasBlade = true;
-    private boolean hasEdge = true;
-    private boolean hasButt = true;
-    private boolean hasHandle = true;*/
-
-    /**
-     * Fields - signs of the weapon
+     * Optional fields - signs of the weapon
      */
     private double bladeLength = -1;
     private double buttThickness = -1;
@@ -33,21 +24,24 @@ public class ColdSteel {
     /**
      * Builder class for outer class
      */
-    public static class ColdSteelBuilder {
+    public static class ColdSteelBuilder
+    {
         private String title = "ColdSteel";
-        //private String type = "coldsteel";
-        /*private boolean hasBlade = true;
-        private boolean hasEdge = true;
-        private boolean hasButt = true;
-        private boolean hasHandle = true;*/
+        private  double price = 0;
         private double bladeLength = -1;
         private double buttThickness = -1;
         private double bladeHardness = -1;
         private boolean safetyOfHandle = false;
         private boolean edgeSharpness = false;
 
-        public ColdSteelBuilder(String title) {
+        /**
+         * Constructor with only mandatory parameters
+         * @param title - title
+         * @param price - price
+         */
+        public ColdSteelBuilder(String title, double price) {
             this.title = title;
+            this.price = price;
         }
 
         public ColdSteelBuilder setBladeLength(double bladeLength) {
@@ -79,33 +73,20 @@ public class ColdSteel {
             return new ColdSteel(this);
         }
     }
+
     /**
      * Constructor - creates cold steel of certain type
      * @param builder - created builder object from the nested class
      */
-    private ColdSteel(ColdSteelBuilder builder) {
+    protected ColdSteel(ColdSteelBuilder builder) {
         this.title = builder.title;
+        this.price = builder.price;
         this.bladeLength = builder.bladeLength;
         this.buttThickness = builder.buttThickness;
         this.bladeHardness = builder.bladeHardness;
         this.safetyOfHandle = builder.safetyOfHandle;
         this.edgeSharpness = builder.edgeSharpness;
     }
-
-    /*public ColdSteel(String _type, boolean _hasBlade, boolean _hasButt, boolean _hasEdge, boolean _hasHandle,
-                     double _bladeLength, double _buttThickness, double _bladeHardness,
-                     boolean _safetyOfHandle, boolean _edgeSharpness) {
-        this.type = _type;
-        this.hasHandle = _hasHandle;
-        this.hasButt = _hasButt;
-        this.hasEdge = _hasEdge;
-        this.hasBlade = _hasBlade;
-        this.bladeLength = _bladeLength;
-        this.bladeHardness = _bladeHardness;
-        this.buttThickness = _buttThickness;
-        this.safetyOfHandle = _safetyOfHandle;
-        this.edgeSharpness = _edgeSharpness;
-    }*/
 
     /**
      * Causes damage
@@ -119,9 +100,10 @@ public class ColdSteel {
     public String getTitle() {
         return title;
     }
-    /*public String getType() {
-        return type;
-    }*/
+
+    public double getPrice() {
+        return price;
+    }
 
     public double getBladeLength() {
         return bladeLength;
@@ -141,9 +123,12 @@ public class ColdSteel {
         return edgeSharpness;
     }
 
-
+    /**
+     * Method determines if the cold steel is civil
+     * @return true if yes and false otherwise
+     */
     public  boolean isCivilColdSteel() {
-        if (bladeLength >= 0.1 && buttThickness >= 0.026 && buttThickness <= 0.06 && bladeHardness >= 42 &&
+        if (bladeLength >= 0.9 && buttThickness >= 0.026 && buttThickness <= 0.06 && bladeHardness >= 42 &&
                     edgeSharpness && safetyOfHandle)
             return true;
         else return false;

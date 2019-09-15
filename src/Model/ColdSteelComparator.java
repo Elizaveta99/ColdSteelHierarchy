@@ -15,8 +15,6 @@ public class ColdSteelComparator implements Comparator<ColdSteel> {
             return 3;
         if(obj instanceof ShockFragmenting)
             return 4;
-        if(obj instanceof CrushingWeapons)
-            return 5;
         return 0;
     }
 

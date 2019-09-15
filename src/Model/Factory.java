@@ -7,54 +7,41 @@ import java.lang.Exception;
  * @author Elizaveta Rudko
  * @version 1.0.0
  */
-public abstract class Factory {
+public class Factory {
 
-    private enum ColdSteelType{Piercing, Chopping, Stabbing, ShockFragmenting, Crushing};
+    private enum ColdSteelType{Piercing, Chopping, Stabbing, ShockFragmenting};
 
     /**
      * Implementation of factory method
      */
-    public static ColdSteel createColdSteel(String id, String _title, double _bladeLength, double _buttThickness,
+    public static ColdSteel createColdSteel(String id, String _title, double _price,
+                                            double _bladeLength, double _buttThickness,
                                                 double _bladeHardness, boolean _safetyOfHandle,
-                                                    boolean _edgeSharpness) throws Exception {
+                                                    boolean _edgeSharpness) {
         ColdSteelType type = ColdSteelType.valueOf(id);
         ColdSteel coldSteelObject = null;
         switch (type) {
             case Piercing:
-                coldSteelObject = new PiercingWeapons.ColdSteelBuilder(_title)
+                coldSteelObject = new PiercingWeapons.ColdSteelBuilder(_title, _price)
                         .setBladeLength(_bladeLength)
                         .setButtThickness(_buttThickness)
                         .setBladeHardness(_bladeHardness)
                         .setSafetyOfHandle(_safetyOfHandle)
                         .setEdgeSharpness(_edgeSharpness).build();
             case Chopping:
-                coldSteelObject = new ChoppingWeapons.ColdSteelBuilder(_title)
-                        .setBladeLength(_bladeLength)
-                        .setButtThickness(_buttThickness)
-                        .setBladeHardness(_bladeHardness)
+                coldSteelObject = new ChoppingWeapons.ColdSteelBuilder(_title, _price)
                         .setSafetyOfHandle(_safetyOfHandle)
                         .setEdgeSharpness(_edgeSharpness).build();
             case Stabbing:
-                coldSteelObject = new StabbingWeapons.ColdSteelBuilder(_title)
+                coldSteelObject = new StabbingWeapons.ColdSteelBuilder(_title, _price)
                         .setBladeLength(_bladeLength)
                         .setButtThickness(_buttThickness)
                         .setBladeHardness(_bladeHardness)
                         .setSafetyOfHandle(_safetyOfHandle)
                         .setEdgeSharpness(_edgeSharpness).build();
             case ShockFragmenting:
-                coldSteelObject = new ShockFragmenting.ColdSteelBuilder(_title)
-                        .setBladeLength(_bladeLength)
-                        .setButtThickness(_buttThickness)
-                        .setBladeHardness(_bladeHardness)
-                        .setSafetyOfHandle(_safetyOfHandle)
-                        .setEdgeSharpness(_edgeSharpness).build();
-            case Crushing:
-                coldSteelObject = new CrushingWeapons.ColdSteelBuilder(_title)
-                        .setBladeLength(_bladeLength)
-                        .setButtThickness(_buttThickness)
-                        .setBladeHardness(_bladeHardness)
-                        .setSafetyOfHandle(_safetyOfHandle)
-                        .setEdgeSharpness(_edgeSharpness).build();
+                coldSteelObject = new ShockFragmenting.ColdSteelBuilder(_title, _price)
+                        .build();
                 default: System.err.println("Unknown/unsupported cold steel type.");
         }
         return coldSteelObject;
