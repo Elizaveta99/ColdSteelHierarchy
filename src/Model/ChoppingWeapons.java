@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 public class ChoppingWeapons extends ColdSteel {
 
     public ChoppingWeapons(ColdSteelBuilder builder)
@@ -7,7 +9,25 @@ public class ChoppingWeapons extends ColdSteel {
         super(builder);
     }
 
+    @Override
     public void causeDamage() {
+        System.out.println("Weapon choppes");
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                ", safetyOfHandle = " + this.getSafetyOfHandle() +
+                ", edgeSharpness = " + this.getEdgeSharpness();
     }
 }

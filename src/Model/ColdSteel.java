@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 /**
  * Base class for factory
  * @author Elizaveta Rudko
@@ -7,8 +9,9 @@ package Model;
  */
 public class ColdSteel {
     /**
-     * Mandatory fields - title and price of cold steel
+     * Mandatory fields - type, title and price of cold steel
      */
+    private String type;
     private String title = "ColdSteel";
     private  double price = 0;
 
@@ -26,6 +29,7 @@ public class ColdSteel {
      */
     public static class ColdSteelBuilder
     {
+        private String type;
         private String title = "ColdSteel";
         private  double price = 0;
         private double bladeLength = -1;
@@ -36,10 +40,12 @@ public class ColdSteel {
 
         /**
          * Constructor with only mandatory parameters
+         * @param type - type
          * @param title - title
          * @param price - price
          */
-        public ColdSteelBuilder(String title, double price) {
+        public ColdSteelBuilder(String type, String title, double price) {
+            this.type = type;
             this.title = title;
             this.price = price;
         }
@@ -79,6 +85,7 @@ public class ColdSteel {
      * @param builder - created builder object from the nested class
      */
     protected ColdSteel(ColdSteelBuilder builder) {
+        this.type = builder.type;
         this.title = builder.title;
         this.price = builder.price;
         this.bladeLength = builder.bladeLength;
@@ -94,9 +101,13 @@ public class ColdSteel {
     public void causeDamage() {};
 
     /**
-     * Returns title of cold steel
-     * @return title
+     * Returns type of cold steel
+     * @return type
      */
+    public String getType() {
+        return type;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -135,8 +146,32 @@ public class ColdSteel {
     }
 
 
-   /* public String toString() { // или абстрактный и в каждом определить?
-        return
-    }*/
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ColdSteel)) return false;
+        ColdSteel coldSteel = (ColdSteel) o;
+        return Double.compare(coldSteel.getPrice(), getPrice()) == 0 &&
+                Double.compare(coldSteel.getBladeLength(), getBladeLength()) == 0 &&
+                Double.compare(coldSteel.getButtThickness(), getButtThickness()) == 0 &&
+                Double.compare(coldSteel.getBladeHardness(), getBladeHardness()) == 0 &&
+                getSafetyOfHandle() == coldSteel.getSafetyOfHandle() &&
+                getEdgeSharpness() == coldSteel.getEdgeSharpness() &&
+                Objects.equals(getType(), coldSteel.getType()) &&
+                Objects.equals(getTitle(), coldSteel.getTitle());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getType(), getTitle(), getPrice(), getBladeLength(), getButtThickness(), getBladeHardness(), getSafetyOfHandle(), getEdgeSharpness());
+    }
+
+    @Override
+    public String toString() {
+        return "ColdSteel: " +
+                "type = " + type +
+                "title = " + title +
+                ", price = " + price;
+    }
 }
 
