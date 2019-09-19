@@ -42,7 +42,6 @@ public class Factory {
             case ShockFragmenting:
                 coldSteelObject = new ShockFragmenting.ColdSteelBuilder(_type, _title, _price)
                         .build();
-                default: System.err.println("Unknown/unsupported cold steel type.");
         }
         return coldSteelObject;
     }

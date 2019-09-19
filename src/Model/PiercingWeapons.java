@@ -9,7 +9,7 @@ public class PiercingWeapons extends ColdSteel {
 
     @Override
     public void causeDamage() {
-        System.out.println("Weapon pierces");
+        System.out.println("Applying damage from piercing cold steel");
     }
 
     @Override

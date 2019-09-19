@@ -9,7 +9,7 @@ public class ShockFragmenting extends ColdSteel {
 
     @Override
     public void causeDamage() {
-        System.out.println("Weapon fragments");
+        System.out.println("Applying damage from shock-fragmenting cold steel");
     }
 
     @Override

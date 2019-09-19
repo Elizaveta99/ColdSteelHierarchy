@@ -11,7 +11,7 @@ public class ChoppingWeapons extends ColdSteel {
 
     @Override
     public void causeDamage() {
-        System.out.println("Weapon choppes");
+        System.out.println("Applying damage from chopping cold steel");
     }
 
     @Override

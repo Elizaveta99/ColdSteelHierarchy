@@ -3,6 +3,7 @@ package Controller;
 import Model.ColdSteel;
 import Model.ColdSteelComparator;
 import Model.Factory;
+import Model.Strategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,16 +11,26 @@ import java.util.List;
 
 public class Controller {
 
-    public static void outListOfColdSteel(List<ColdSteel> weapons)
+    private Strategy strategy;
+
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public List<ColdSteel> executeStrategy(List<ColdSteel> weapons, double firstParam, double secondParam) {
+        return strategy.search(weapons, firstParam, secondParam);
+    }
+
+    public void outListOfColdSteel(List<ColdSteel> weapons)
     {
-        System.out.println("Collection of weapons");
         for (ColdSteel weapon: weapons)
         {
             System.out.println(weapon.toString());
         }
+        System.out.println();
     }
 
-    public static List<ColdSteel> getListOfColdSteel()
+    public List<ColdSteel> getListOfColdSteel()
     {
         Factory factory = new Factory();
         List<ColdSteel> weapons = new ArrayList<>();
@@ -38,7 +49,7 @@ public class Controller {
         return  weapons;
     }
 
-    public static double getCommonCost(List<ColdSteel> weapons)
+    public double getCommonCost(List<ColdSteel> weapons)
     {
         double cost = 0;
         for (ColdSteel weapon: weapons)
@@ -48,33 +59,9 @@ public class Controller {
         return  cost;
     }
 
-    public static List<ColdSteel> getByCertainName(List<ColdSteel> weapons, int length)
-    {
-        List<ColdSteel> ans = null;
-        for (ColdSteel weapon: weapons)
-        {
-            if (weapon.getTitle().length() >= length)
-                ans.add(weapon);
-        }
-        return ans;
-    }
-
-    public static List<ColdSteel> getByCertainPrice(List<ColdSteel> weapons, double price1, double price2)
-    {
-        List<ColdSteel> ans = null;
-        for (ColdSteel weapon: weapons)
-        {
-            if (weapon.getPrice() >= price1 && weapon.getPrice() <= price2)
-                ans.add(weapon);
-        }
-        return ans;
-    }
-
-    public static void /*List<ColdSteel>*/ getSortedList(List<ColdSteel> weapons)
+    public void getSortedList(List<ColdSteel> weapons)
     {
         Collections.sort(weapons, new ColdSteelComparator());
         outListOfColdSteel(weapons);
-        //return  weapons;
     }
-
 }

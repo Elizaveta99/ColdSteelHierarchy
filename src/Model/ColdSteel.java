@@ -98,7 +98,10 @@ public class ColdSteel {
     /**
      * Causes damage
      */
-    public void causeDamage() {};
+    public void causeDamage()
+    {
+        System.out.println("Applying damage from cold steel");
+    };
 
     /**
      * Returns type of cold steel
@@ -170,7 +173,7 @@ public class ColdSteel {
     public String toString() {
         return "ColdSteel: " +
                 "type = " + type +
-                "title = " + title +
+                ", title = " + title +
                 ", price = " + price;
     }
 }

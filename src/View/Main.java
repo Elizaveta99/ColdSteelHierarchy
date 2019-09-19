@@ -2,6 +2,8 @@ package View;
 
 import Controller.Controller;
 import Model.ColdSteel;
+import Model.StrategySearchByLengthOfTitle;
+import Model.StrategySearchByPrice;
 
 import java.util.List;
 
@@ -13,12 +15,26 @@ import java.util.List;
 public class Main {
     public static void main(String[] args)
     {
-        List<ColdSteel> weapons = Controller.getListOfColdSteel();
-        Controller.outListOfColdSteel(weapons);
-        //найти в диапазоне заданных параметров
-        //посортить по типу
-        Controller.getSortedList(weapons);
-        //вывести
-        // найти общую стоимость
+        Controller controller = new Controller();
+        List<ColdSteel> weapons = controller.getListOfColdSteel();
+        System.out.println("Collection of weapons");
+        controller.outListOfColdSteel(weapons);
+
+        System.out.println("Sorted by type collection of weapons");
+        controller.getSortedList(weapons);
+
+        System.out.println("Common cost : " + controller.getCommonCost(weapons));
+
+        controller.setStrategy(new StrategySearchByLengthOfTitle());
+        List<ColdSteel> weaponsByLength = controller.executeStrategy(weapons, 2, 5);
+        System.out.println("Collection of weapons with length of titles between " + 2 + " and " + 5);
+        controller.outListOfColdSteel(weaponsByLength);
+
+        controller.setStrategy(new StrategySearchByPrice());
+        List<ColdSteel> weaponsByPrice = controller.executeStrategy(weapons, 90, 200);
+        System.out.println("Collection of weapons with prices between " + 90 + " and " + 200);
+        controller.outListOfColdSteel(weaponsByPrice);
+
+
     }
 }

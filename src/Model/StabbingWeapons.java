@@ -9,7 +9,7 @@ public class StabbingWeapons extends ColdSteel {
 
     @Override
     public void causeDamage() {
-        System.out.println("Weapon stabbes");
+        System.out.println("Applying damage from stabbing cold steel");
     }
 
     @Override
