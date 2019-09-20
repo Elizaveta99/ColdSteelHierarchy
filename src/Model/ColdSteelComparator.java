@@ -2,8 +2,16 @@ package Model;
 
 import java.util.Comparator;
 
+/**
+ * Class-comparator for ColdSteel objects
+ */
 public class ColdSteelComparator implements Comparator<ColdSteel>
 {
+    /**
+     * Method matches type with certain number for sorting method
+     * @param type - type of cold steel
+     * @return - number for type
+     */
     private int getNumber(String type)
     {
         if(type.equals("Piercing"))

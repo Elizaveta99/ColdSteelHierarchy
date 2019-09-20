@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * Class-inheritor of ColdSteel class
+ */
 public class ShockFragmenting extends ColdSteel {
 
     public ShockFragmenting(ColdSteelBuilder builder)

@@ -11,7 +11,7 @@ public class ColdSteel {
     /**
      * Mandatory fields - type, title and price of cold steel
      */
-    private String type;
+    private String type = "coldsteel";
     private String title = "ColdSteel";
     private  double price = 0;
 
@@ -50,6 +50,11 @@ public class ColdSteel {
             this.price = price;
         }
 
+        /**
+         * Setter method for optional field
+         * @param bladeLength - length of the blade
+         * @return object of ColdSteelBuilder class
+         */
         public ColdSteelBuilder setBladeLength(double bladeLength) {
             this.bladeLength = bladeLength;
             return this;

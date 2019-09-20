@@ -9,18 +9,41 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Class with methods that demonstrate functionality
+ * @author  Elizaveta Rudko
+ * @version 1.0.0
+ */
 public class Controller {
 
+    /**
+     * Field - for certain strategy of behaviour for the class
+     */
     private Strategy strategy;
 
+    /**
+     * Setter of the strategy
+     * @param strategy - certain strategy
+     */
     public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
     }
 
+    /**
+     * Method that applies strategy method "search"
+     * @param weapons - list of weapons
+     * @param firstParam - first title or price
+     * @param secondParam - second title or price
+     * @return result of the "search" method
+     */
     public List<ColdSteel> executeStrategy(List<ColdSteel> weapons, double firstParam, double secondParam) {
         return strategy.search(weapons, firstParam, secondParam);
     }
 
+    /**
+     * Prints list of the weapons
+     * @param weapons - list of weapons
+     */
     public void outListOfColdSteel(List<ColdSteel> weapons)
     {
         for (ColdSteel weapon: weapons)
@@ -30,6 +53,10 @@ public class Controller {
         System.out.println();
     }
 
+    /**
+     * Initializes list of the weapons
+     * @return - new list
+     */
     public List<ColdSteel> getListOfColdSteel()
     {
         Factory factory = new Factory();
@@ -49,6 +76,11 @@ public class Controller {
         return  weapons;
     }
 
+    /**
+     * Method that finds common cost
+     * @param weapons - our list
+     * @return - common cost
+     */
     public double getCommonCost(List<ColdSteel> weapons)
     {
         double cost = 0;
@@ -59,6 +91,10 @@ public class Controller {
         return  cost;
     }
 
+    /**
+     * Sorts collection of weapons by type
+     * @param weapons - sorted weapons
+     */
     public void getSortedList(List<ColdSteel> weapons)
     {
         Collections.sort(weapons, new ColdSteelComparator());

@@ -2,6 +2,9 @@ package Model;
 
 import java.util.Objects;
 
+/**
+ * Class-inheritor of ColdSteel class
+ */
 public class ChoppingWeapons extends ColdSteel {
 
     public ChoppingWeapons(ColdSteelBuilder builder)

@@ -23,6 +23,11 @@ public class Main {
         System.out.println("Sorted by type collection of weapons");
         controller.getSortedList(weapons);
 
+        if (weapons.get(0).isCivilColdSteel())
+            System.out.println(weapons.get(0).toString() + " is civil cold steel");
+        else
+            System.out.println(weapons.get(0).toString() + " is not civil cold steel");
+
         System.out.println("Common cost : " + controller.getCommonCost(weapons));
 
         controller.setStrategy(new StrategySearchByLengthOfTitle());
@@ -34,7 +39,5 @@ public class Main {
         List<ColdSteel> weaponsByPrice = controller.executeStrategy(weapons, 90, 200);
         System.out.println("Collection of weapons with prices between " + 90 + " and " + 200);
         controller.outListOfColdSteel(weaponsByPrice);
-
-
     }
 }

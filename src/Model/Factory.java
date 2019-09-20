@@ -9,10 +9,22 @@ import java.lang.Exception;
  */
 public class Factory {
 
+    /**
+     * Types of cold steel
+     */
     public enum ColdSteelType{Piercing, Chopping, Stabbing, ShockFragmenting};
 
     /**
      * Implementation of factory method
+     * @param _type - type
+     * @param _title - title
+     * @param _price - price
+     * @param _bladeLength - length of blade
+     * @param _buttThickness - thickness of butt
+     * @param _bladeHardness - hardness of blade
+     * @param _safetyOfHandle - safety of handle
+     * @param _edgeSharpness - sharpness of edge
+     * @return - object of ColdSteel class
      */
     public static ColdSteel createColdSteel(String _type, String _title, double _price,
                                             double _bladeLength, double _buttThickness,

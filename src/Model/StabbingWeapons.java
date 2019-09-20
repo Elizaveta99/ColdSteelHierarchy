@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * Class-inheritor of ColdSteel class
+ */
 public class StabbingWeapons extends ColdSteel {
 
     public StabbingWeapons(ColdSteelBuilder builder)
