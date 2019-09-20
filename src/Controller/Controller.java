@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.ColdSteel;
-import Model.ColdSteelComparator;
-import Model.Factory;
-import Model.Strategy;
+import Model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,18 +58,19 @@ public class Controller {
     {
         Factory factory = new Factory();
         List<ColdSteel> weapons = new ArrayList<>();
-        weapons.add(factory.createColdSteel("Piercing", "spear", 100.0, 0.9,
-                0.03, 45, true, true) );
-        weapons.add(factory.createColdSteel("Piercing", "rapier", 200.0, 50,
+        weapons.add(factory.createColdSteel("Piercing", "rapier", 200.0, 51,
                 0.05, 60, true, true) );
         weapons.add(factory.createColdSteel("Stabbing", "sword", 10.0, 10,
                 1, 35, false, true) );
-        weapons.add(factory.createColdSteel("ShockFragmenting", "mace", 300.0, 50,
+        weapons.add(factory.createColdSteel("Piercing", "spear", 100.0, 0.9,
+                0.03, 45, true, true) );
+        weapons.add(factory.createColdSteel("ShockFragmenting", "mace", 300.0, 52,
                 0.05, 51, true, false) );
-        weapons.add(factory.createColdSteel("Stabbing", "katana", 200.0, 50,
+        weapons.add(factory.createColdSteel("Stabbing", "katana", 200.0, 53,
                 0.05, 60, true, true) );
         weapons.add(factory.createColdSteel("Chopping", "tomahawk", 210.0, 30,
                 0.04, 90, true, false) );
+
         return  weapons;
     }
 

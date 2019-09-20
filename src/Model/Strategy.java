@@ -10,5 +10,5 @@ import java.util.List;
  * @version 1.0.0
  */
 public interface Strategy {
-    public List<ColdSteel> search(List<ColdSteel> weapons, double firstParam, double secondParam);
+    List<ColdSteel> search(List<ColdSteel> weapons, double firstParam, double secondParam);
 }

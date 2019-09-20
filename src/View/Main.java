@@ -2,6 +2,7 @@ package View;
 
 import Controller.Controller;
 import Model.ColdSteel;
+import Model.PiercingWeapons;
 import Model.StrategySearchByLengthOfTitle;
 import Model.StrategySearchByPrice;
 
@@ -23,12 +24,21 @@ public class Main {
         System.out.println("Sorted by type collection of weapons");
         controller.getSortedList(weapons);
 
-        if (weapons.get(0).isCivilColdSteel())
-            System.out.println(weapons.get(0).toString() + " is civil cold steel");
-        else
-            System.out.println(weapons.get(0).toString() + " is not civil cold steel");
-
         System.out.println("Common cost : " + controller.getCommonCost(weapons));
+
+        System.out.println("Damage of cold steel :");
+        for(ColdSteel weapon: weapons)
+        {
+            weapon.causeDamage();
+        }
+        System.out.println();
+
+        System.out.println("Is this cold steel civil:");
+        for(ColdSteel weapon: weapons)
+        {
+            weapon.isCivilColdSteel();
+        }
+        System.out.println();
 
         controller.setStrategy(new StrategySearchByLengthOfTitle());
         List<ColdSteel> weaponsByLength = controller.executeStrategy(weapons, 2, 5);
